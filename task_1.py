@@ -1,38 +1,11 @@
-def calc(expr):
-    tmp_expr = ''
-    a = None
-    for char in expr:
-        tmp_expr += char
-        if char == '/' or char == '-' or char == '+' or char == '*':
-            tmp_char = char
-            tmp_expr = tmp_expr.strip(char)
-            tmp_expr = tmp_expr.strip()
-            if a is None:
-                a = int(tmp_expr)
-                tmp_expr = ''
-            else:
-                continue
+START_POINT = 10
+END_POINT = 100
 
-    if tmp_char == '/':
-        tmp_expr = tmp_expr.strip()
-        if tmp_expr == '0':
-            return 'Нельзя делить на ноль'
-        return a / int(tmp_expr)
-
-    elif tmp_char == '+':
-        tmp_expr = tmp_expr.strip(' ')
-        return a + int(tmp_expr)
-
-    elif tmp_char == '-':
-        tmp_expr = tmp_expr.strip(' ')
-        return a - int(tmp_expr)
-
-    tmp_expr = tmp_expr.strip(' ')
-    return a * int(tmp_expr)
+for dig in range(2,START_POINT):
+    print(str(dig) + ': ', end='')
+    for value in range(START_POINT, END_POINT):
+        if(value % dig == 0):
+            print(value, end=' ')
+    print()
 
 
-while True:
-    expr = input("Введите выражение: ")
-    if expr == '0':
-        break
-    print(calc(expr))

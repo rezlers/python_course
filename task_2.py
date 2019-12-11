@@ -1,13 +1,12 @@
-def dig_num(number):
-    odd_num = 0
-    even_num = 0
-    for char in number:
-        if int(char) % 2 == 0:
-            even_num += 1
-        else:
-            odd_num += 1
-    return f"четных чисел: {even_num} нечетных чисел: {odd_num}"
 
+in_list = input("Введите числа через пробел:\n").split(' ')
+in_list = [int(value) for value in in_list]
+print(in_list)
 
-res = dig_num(input('Введите число: '))
-print(res)
+new_list = []
+for i in range(len(in_list)):
+    if in_list[i] % 2 == 0:
+        new_list.append(i)
+
+print(new_list)
+

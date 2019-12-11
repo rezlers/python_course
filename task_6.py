@@ -1,27 +1,28 @@
-def guess_num(num):
-    num = int(num)
-    from random import random
-    tries = 10
-    rand_num = round(100 * random())
+from random import random
 
-    while num != rand_num and tries != 0:
-        if num > rand_num:
-            print("Это число больше загаданого")
-            tries = tries - 1
-            num = input(f"Осталось попыток: {tries}\nВведите число: ")
-            num = int(num)
-        else:
-            print("Это число меньше загаданого")
-            tries = tries - 1
-            num = input(f"Осталось попыток: {tries}\nВведите число: ")
-            num = int(num)
-    if(num == rand_num and tries > 0):
-        return "Победа!"
-    return "Проигрыш:("
+SIZE = 10
+in_list = [round(100*random()) for _ in range(SIZE)]
+print(in_list)
 
 
-while True:
-    res = input("Игра началась! Осталось попыток: 10\nВведите число: ")
-    if res == '0':
-        break
-    print(guess_num(res))
+min_value = in_list[0]
+min_ind = 0
+max_value = 0
+max_ind = 0
+for i in range(len(in_list)):
+    if in_list[i] >= max_value:
+        max_value = in_list[i]
+        max_ind = i
+    elif in_list[i] < min_value:
+        min_value = in_list[i]
+        min_ind = i
+
+sum = 0
+if max_ind > min_ind:
+    for value in in_list[min_ind + 1:max_ind]:
+        sum += value
+else:
+    for value in in_list[max_ind + 1:min_ind]:
+        sum += value
+
+print(sum)
